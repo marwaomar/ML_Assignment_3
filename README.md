@@ -31,5 +31,5 @@
 ## Finally i tried sklearn code to compare both codes.
 
 ## <u>Results : <u>
-![alt text](3.png)
+![alt text](3.png) <br>
 ![alt text](4.png)
