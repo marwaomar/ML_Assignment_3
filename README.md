@@ -20,7 +20,7 @@
 ### to get unique values and its count
 ## *Leaf ,Decision_Note :*
 ### Two classes to help building and printing the tree which i got from :
-> [Github](linkhttps://github.com/random-forests/tutorials/blob/master/decision_tree.ipynb)
+[Github](linkhttps://github.com/random-forests/tutorials/blob/master/decision_tree.ipynb)
 ## *build_tree:*
 ### Using all the previous functions to finaly build a tree and use a recursive method to repeat for each branch
 ## *Predict:*
