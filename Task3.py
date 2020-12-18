@@ -74,10 +74,11 @@ def gini_impurity(label, label_idx):
         p_i = unique_label_count[i] / sum(unique_label_count)
         impurity -= p_i ** 2 
     return impurity
-def information_gain(label, left_idx, right_idx, impurity): 
-    
+def information_gain( left, right, impurity): 
+    left_idx=left.index
+    right_idx=right.index
     p = float(len(left_idx)) / (len(left_idx) + len(right_idx))
-    info_gain = impurity - p * gini_impurity(label, left_idx)- (1 - p) * gini_impurity(label, right_idx)
+    info_gain = impurity - ((p * gini_impurity(left, left_idx))- ((1 - p) * gini_impurity(right, right_idx)))
     return info_gain
 def caclSE( dataSet):
     if (dataSet.shape [0] == 0): # If you enter a null data set, returns 0
@@ -94,31 +95,32 @@ def splitDataSet( dataSet, feature, value):
 
 def find_best_split(df, label):
     n = df.shape [1] 
-    idx=label.index
-  
+    label_idx=label.index
+    bestGain=0.0
     bestFeature = None
     bestValue = None
     minErr = np.inf
-    df = df.loc[idx] # converting training data to pandas dataframe
+    df = df.loc[label_idx] # converting training data to pandas dataframe
+
+    impurity = gini_impurity(label, label_idx) # determining the impurity at the current node    
     for col in range(n): 
 
         unique_values = set(df.iloc[:,col])
         unique_values ={x for x in unique_values  if x==x}
-     
         for value in unique_values: 
-            arr1, arr2 = splitDataSet(df, col, value)
-            err1 = caclSE(arr1)
-            err2 = caclSE(arr2)
-            newErr = err1 + err2
-                                 #Select variance and the minimum threshold and the corresponding features of
-            if newErr < minErr:
-                minErr = newErr
+            arr_L, arr_R = splitDataSet(df, col, value)
+
+            IG=information_gain(arr_L,arr_R,impurity)
+
+            if bestGain < IG:
+                bestGain = IG
 #                 bestFeature = df.iloc[:,col].name
                 bestFeature = col
                 bestValue = value
     return bestFeature,bestValue
         
 
+# print(find_best_split(X_train, y_train))
 def count(label, idx):
     unique_label, unique_label_counts = np.unique(label.loc[idx], return_counts=True)
     dict_label_count = dict(zip(unique_label, unique_label_counts))

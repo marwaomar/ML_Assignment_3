@@ -10,8 +10,7 @@
 ## information_gain: Calculates info gain from the following formula:
 > ![alt text](2.png)
 
-## *CaclSE*:
-### Calculate variance of data to determine best split later
+
 ## SplitDataSet:
 ### Splitting data according to a value
 ## find_best_split:
