@@ -10,7 +10,6 @@
 ## information_gain: Calculates info gain from the following formula:
 > ![alt text](2.png)
 
-
 ## SplitDataSet:
 ### Splitting data according to a value
 ## find_best_split:
@@ -19,7 +18,9 @@
 ### to get unique values and its count
 ## *Leaf ,Decision_Note :*
 ### Two classes to help building and printing the tree which i got from :
-> [Github](linkhttps://github.com/random-forests/tutorials/blob/master/decision_tree.ipynb)
+
+[Github](https://github.com/random-forests/tutorials/blob/master/decision_tree.ipynb)
+
 ## *build_tree:*
 ### Using all the previous functions to finaly build a tree and use a recursive method to repeat for each branch
 ## *Predict:*
@@ -30,5 +31,7 @@
 ## Finally i tried sklearn code to compare both codes.
 
 ## <u>Results : <u>
-![alt text](3.png)
+
+![alt text](3.png) <br>
 ![alt text](4.png)
+
